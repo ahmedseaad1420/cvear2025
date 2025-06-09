@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <div style="text-align: center; margin-bottom: 30px;">
+  <h1 style="color: #1e90ff; font-size: 28px; margin-bottom: 10px;">
+    مرحبًا بكم في أكاديمية مهندس للسيرة الذاتية
+  </h1>
+  <p style="font-size: 16px; color: #555;">
+    من فضلك قم بتعبئة النموذج أدناه بدقة لنتمكن من إعداد سيرتك الذاتية باحترافية
+  </p>
+</div>
+    <title>نموذج تحضير السيرة الذاتية</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <style>
+  body {
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    background: #f0f4f8;
+    color: #333;
+    direction: rtl;
+  }
+
+  form {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 800px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  }
+
+  h2, h3 {
+    color: #1e90ff;
+    font-size: 22px;
+    margin-top: 30px;
+  }
+
+  label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #2c3e50;
+  }
+
+  input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+  }
+
+  button {
+    margin-top: 25px;
+    padding: 12px 20px;
+    background: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  button:hover {
+    background: #0d6efd;
+  }
+
+  hr {
+    margin: 25px 0;
+    border: none;
+    height: 1px;
+    background: #ddd;
+  }
+</style>
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        <h2>📄 تحضير السيرة الذاتية باحترافية</h2>
+        <label>الاسم بالعربية</label><input type="text" name="name_ar" required>
+        <label>الاسم بالإنجليزية</label><input type="text" name="name_en" required>
+        <label>لغة السيرة الذاتية</label>
+        <select name="cv_lang"><option>العربية</option><option>الإنجليزية</option></select>
+
+        <h3>🎓 التعليم</h3>
+        <div id="education">
+            <div class="edu-entry">
+                <label>اسم الجامعة</label><input type="text" name="university[]">
+                <label>التخصص</label><input type="text" name="major[]">
+                <label>المعدل التراكمي</label><input type="text" name="gpa[]">
+                <label>مرتبة الشرف</label><input type="text" name="honors[]">
+                <hr>
+            </div>
+        </div>
+        <button type="button" onclick="addEducation()">➕ أضف شهادة جديدة</button>
+
+        <h3>💼 الخبرات العملية</h3>
+        <div id="experiences">
+            <div class="experience-entry">
+                <label>المسمى الوظيفي</label>
+                <input type="text" name="job_title[]">
+                <label>اسم الشركة</label>
+                <input type="text" name="company[]">
+                <label>تاريخ البداية والنهاية</label>
+                <input type="text" name="job_dates[]">
+                <label>المهام الرئيسية</label>
+                <textarea name="job_tasks[]"></textarea>
+                <hr>
+            </div>
+        </div>
+        <button type="button" onclick="addExperience()">➕ أضف خبرة جديدة</button>
+
+        <h3>📚 الدورات التدريبية</h3>
+        <div id="courses">
+            <div class="course-entry">
+                <label>اسم الدورة</label>
+                <input type="text" name="course_name[]">
+                <label>الجهة</label>
+                <input type="text" name="course_org[]">
+                <label>تاريخ الحصول عليها</label>
+                <input type="text" name="course_date[]">
+                <hr>
+            </div>
+        </div>
+        <button type="button" onclick="addCourse()">➕ أضف دورة جديدة</button>
+
+        <h3>💻 المهارات التقنية</h3>
+        <textarea name="skills"></textarea>
+        <h3>🏅 العضويات المهنية</h3>
+        <label>اسم الجهة</label><input type="text" name="membership_org">
+        <label>رقم العضوية</label><input type="text" name="membership_id">
+        <h3>🤝 الأنشطة التطوعية</h3>
+        <label>اسم النشاط</label><input type="text" name="volunteer_name">
+        <label>التفاصيل</label><textarea name="volunteer_details"></textarea>
+        <label>المدة</label><input type="text" name="volunteer_duration">
+        <h3>🛠️ مشاريع التخرج أو المواد</h3>
+        <label>اسم المشروع</label><input type="text" name="project_name">
+        <label>تفاصيله</label><textarea name="project_details"></textarea>
+        <h3>📞 معلومات التواصل</h3>
+        <label>البريد الإلكتروني</label><input type="email" name="email">
+        <label>رقم الجوال</label><input type="text" name="phone">
+        <label>LinkedIn</label><input type="url" name="linkedin">
+        <h3>🔒 بيانات سرية (اختياري - لعملاء الباقات المدفوعة فقط)</h3>
+
+<p style="color: #888; font-size: 14px;">
+  هذا القسم اختياري ومخصص فقط لأصحاب البكجات المدفوعة، خصوصًا باقة LinkedIn ✨
+</p>
+
+<label>الإيميل الخاص بالحساب (اختياري)</label>
+<input type="email" name="private_email" placeholder="example@email.com">
+
+<label>كلمة المرور (اختياري)</label>
+<input type="password" name="password" placeholder="••••••••">
+
+<label>المسميات الوظيفية المطلوبة</label>
+<textarea name="job_targets" placeholder="مثال: مهندس شبكات - مسؤول نظم - مدير مشروع"></textarea>
+        <h3>📍 المدن المفضلة للعمل</h3>
+        <label><input type="checkbox" name="cities" value="الرياض"> الرياض</label>
+        <label><input type="checkbox" name="cities" value="جدة"> جدة</label>
+        <label><input type="checkbox" name="cities" value="مكة"> مكة</label>
+        <label><input type="checkbox" name="cities" value="المدينة"> المدينة</label>
+        <label><input type="checkbox" name="cities" value="الدمام"> الدمام</label>
+        <h3>📂 رفع ملفات PDF</h3>
+        <input type="file" name="certificate_file" accept=".pdf">
+        <button type="submit">إرسال النموذج</button>
+    </form>
+
+    <script>
+    function addCourse() {
+        const container = document.getElementById('courses');
+        const entry = document.createElement('div');
+        entry.classList.add('course-entry');
+        entry.innerHTML = `
+            <label>اسم الدورة</label>
+            <input type="text" name="course_name[]">
+            <label>الجهة</label>
+            <input type="text" name="course_org[]">
+            <label>تاريخ الحصول عليها</label>
+            <input type="text" name="course_date[]">
+            <hr>
+        `;
+        container.appendChild(entry);
+    }
+
+    function addExperience() {
+        const container = document.getElementById('experiences');
+        const entry = document.createElement('div');
+        entry.classList.add('experience-entry');
+        entry.innerHTML = `
+            <label>المسمى الوظيفي</label>
+            <input type="text" name="job_title[]">
+            <label>اسم الشركة</label>
+            <input type="text" name="company[]">
+            <label>تاريخ البداية والنهاية</label>
+            <input type="text" name="job_dates[]">
+            <label>المهام الرئيسية</label>
+            <textarea name="job_tasks[]"></textarea>
+            <hr>
+        `;
+        container.appendChild(entry);
+    }
+
+    function addEducation() {
+        const container = document.getElementById('education');
+        const entry = document.createElement('div');
+        entry.classList.add('edu-entry');
+        entry.innerHTML = `
+            <label>اسم الجامعة</label>
+            <input type="text" name="university[]">
+            <label>التخصص</label>
+            <input type="text" name="major[]">
+            <label>المعدل التراكمي</label>
+            <input type="text" name="gpa[]">
+            <label>مرتبة الشرف</label>
+            <input type="text" name="honors[]">
+            <hr>
+        `;
+        container.appendChild(entry);
+    }
+    </script>
+</body>
+</html>
