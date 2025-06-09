@@ -1,5 +1,4 @@
-
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import pandas as pd
 import os
 from datetime import datetime
@@ -24,6 +23,21 @@ def form():
         save_to_excel(processed)
         return "✅ تم حفظ البيانات في Excel بنجاح!"
     return render_template('form.html')
+
+@app.route('/admin')
+def admin():
+    folder = 'saved_submissions'
+    try:
+        files = os.listdir(folder)
+        file_links = [f"<li><a href='/download/{fname}' target='_blank'>{fname}</a></li>" for fname in files]
+        return "<h2>📄 الطلبات المستلمة:</h2><ul>" + "".join(file_links) + "</ul>"
+    except FileNotFoundError:
+        return "🚫 لا يوجد ملفات حالياً."
+
+@app.route('/download/<filename>')
+def download_file(filename):
+    folder = 'saved_submissions'
+    return send_from_directory(folder, filename, as_attachment=True)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000, debug=True)
